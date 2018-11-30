@@ -28,13 +28,15 @@ foreach($json as $k => $v) {
         $arr[] = $v[$key];
     }
 }
-print_r($arr);
 $json = array_values($json);	//将索引连续
 $indexs = [];					//中奖索引
 $length = count($json);			//有效的参加人数
 $scope = [ 0.01, 0.2, 0.4, 0.6, 0.8, 0.99];	//楼层概率
 foreach($scope as $k => $v) {
-    $indexs[] = round($length * $v - 1);	//四舍五入
+	$index = round($length * $v);
+	if($index >= 1)
+		$index -= 1;
+    $indexs[] = $index;	//四舍五入
 }
 $peoples = [];
 $names = [];
