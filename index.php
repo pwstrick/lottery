@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit;
 }
 header("Content-Type:text/html;charset=utf-8");
-$json = file_get_contents('https://www.v2ex.com/api/replies/show.json?topic_id=');
+$json = file_get_contents('https://www.v2ex.com/api/replies/show.json?topic_id=513679');
 $json = json_decode($json, true);
 $arr = [];
 $key = 'member_id';
