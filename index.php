@@ -19,7 +19,7 @@ $json = file_get_contents('https://www.v2ex.com/api/replies/show.json?topic_id='
 $json = json_decode($json, true);
 $arr = [];
 $key = 'member_id';
-$end = mktime(23, 59, 59, 10, 6, 2018);	//截至日期 2018.10.6 23:59:59					
+$end = mktime(23, 59, 59, 12, 6, 2018);	//截至日期 2018.12.6 23:59:59					
 //去掉重复或截至日期后的回帖
 foreach($json as $k => $v) {
     if (in_array($v[$key], $arr) || $v['created'] > $end) {
