@@ -20,15 +20,17 @@ $json = json_decode($json, true);
 $arr = [];
 $key = 'member_id';
 $end = mktime(23, 59, 59, 12, 6, 2018);	//截至日期 2018.12.6 23:59:59					
-//去掉重复或截至日期后的回帖
+//去掉重复、截至日期后的回帖和作者发的回复
 foreach($json as $k => $v) {
-    if (in_array($v[$key], $arr) || $v['created'] > $end) {
+    if (in_array($v[$key], $arr) || $v['created'] > $end || $v['member']['username'] == 'pwstrick') {
         unset($json[$k]);
     } else {
         $arr[] = $v[$key];
     }
 }
 $json = array_values($json);	//将索引连续
+print_r($json);
+print_r(count($json));
 $indexs = [];					//中奖索引
 $length = count($json);			//有效的参加人数
 $scope = [ 0.01, 0.2, 0.4, 0.6, 0.8, 0.99];	//楼层概率
