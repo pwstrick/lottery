@@ -15,11 +15,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit;
 }
 header("Content-Type:text/html;charset=utf-8");
-$json = file_get_contents('https://www.v2ex.com/api/replies/show.json?topic_id=524507');	//可配置
+$json = file_get_contents('https://www.v2ex.com/api/replies/show.json?topic_id=535979');	//可配置
 $json = json_decode($json, true);
 $arr = [];
 $key = 'member_id';
-$end = mktime(23, 59, 59, 1, 8, 2019);	//截至日期 2019.1.8 23:59:59（可配置）			
+$end = mktime(23, 59, 59, 2, 20, 2019);	//截至日期 2019.2.20 23:59:59（可配置）			
 //去掉重复、截至日期后的回帖和作者发的回复
 foreach($json as $k => $v) {
     if (in_array($v[$key], $arr) || $v['created'] > $end || $v['member']['username'] == 'freedom1988') {
